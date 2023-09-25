@@ -21,9 +21,11 @@ jobs:
         go-version: 1.21.0
 
     - name: Test
-      run: go test -race -coverprofile=cover.prof -covermode=atomic ./...
+      run: go test -race -coverprofile=cover.txt -covermode=atomic ./...
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      with:
+        file: ./cover.txt
