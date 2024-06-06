@@ -52,6 +52,10 @@ func Wrap(cause error, message string) error {
 	}
 }
 
+func WithStack(cause error) error {
+	return Wrap(cause, "")
+}
+
 func Cause(err error) error {
 	for err != nil {
 		e, ok := err.(interface {
@@ -73,7 +77,11 @@ func formatChain(err error) string {
 	var buf strings.Builder
 	for err != nil {
 		if f, ok := err.(*fundamental); ok {
-			buf.WriteString(fmt.Sprintf("%s\n%v", f.msg, f.stack))
+			msg := f.msg
+			if msg != "" {
+				msg += "\n"
+			}
+			buf.WriteString(fmt.Sprintf("%s%v", msg, f.stack))
 			err = f.err
 		} else {
 			buf.WriteString(fmt.Sprintf("%s\n", err.Error()))
