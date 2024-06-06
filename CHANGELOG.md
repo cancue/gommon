@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/cancue/gommon/compare/v0.2.0...v0.3.0) (2024-06-06)
+
+
+### Features
+
+* **errors:** add WithStack ([d8d4373](https://github.com/cancue/gommon/commit/d8d43738b9627d6417f9f8c331b2879fc4c27c0f))
+
 ## [0.2.0](https://github.com/cancue/gommon/compare/v0.1.0...v0.2.0) (2023-10-01)
 
 
