@@ -6,9 +6,17 @@ import (
 	"strings"
 )
 
-func New(message string) error {
+func New(a ...any) error {
 	return &fundamental{
-		msg:   message,
+		msg:   fmt.Sprint(a...),
+		stack: newStackTrace(),
+		err:   nil,
+	}
+}
+
+func Newf(format string, a ...any) error {
+	return &fundamental{
+		msg:   fmt.Sprintf(format, a...),
 		stack: newStackTrace(),
 		err:   nil,
 	}
@@ -40,20 +48,28 @@ func (f *fundamental) Format(s fmt.State, verb rune) {
 	s.Write([]byte(f.Error()))
 }
 
-func Wrap(cause error, message string) error {
+func Wrap(cause error, a ...any) error {
 	if cause == nil {
 		return nil
 	}
 
 	return &fundamental{
-		msg:   message,
+		msg:   fmt.Sprint(a...),
 		stack: newStackTrace(),
 		err:   cause,
 	}
 }
 
-func WithStack(cause error) error {
-	return Wrap(cause, "")
+func Wrapf(cause error, format string, a ...any) error {
+	if cause == nil {
+		return nil
+	}
+
+	return &fundamental{
+		msg:   fmt.Sprintf(format, a...),
+		stack: newStackTrace(),
+		err:   cause,
+	}
 }
 
 func Cause(err error) error {
