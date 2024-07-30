@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/cancue/gommon/compare/v0.3.0...v0.4.0) (2024-07-30)
+
+
+### Features
+
+* add json ([ae02f09](https://github.com/cancue/gommon/commit/ae02f09602d721f0ba9b1abdf526418017ee04a3))
+* add slices ([bcf96ab](https://github.com/cancue/gommon/commit/bcf96ab5350d8089579bad0db2108fda9541f04b))
+
 ## [0.3.0](https://github.com/cancue/gommon/compare/v0.2.0...v0.3.0) (2024-07-28)
 
 
